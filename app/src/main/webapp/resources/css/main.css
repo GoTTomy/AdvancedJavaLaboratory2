@@ -1,0 +1,10 @@
+body {
+    background-color: aliceblue;
+}
+
+page {
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: auto;
+    margin-top: auto;
+}

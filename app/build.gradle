@@ -1,0 +1,22 @@
+plugins {
+    id 'java'
+    id 'war'
+}
+
+war{
+   archivesBaseName = 'app.war' 
+}
+
+group 'pl.pjatk.edu.jazapp'
+version '1.0-SNAPSHOT'
+
+sourceCompatibility = 11.0
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'javax:javaee-api:8.0'
+    testImplementation 'junit:junit:4.12'
+}

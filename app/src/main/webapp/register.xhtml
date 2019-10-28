@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:f="http://xmlns.jcp.org/jsf/core"
+>
+
+<h:head>
+    <h:outputStylesheet name="main.css" library="css"/>
+</h:head>
+
+<h:body>
+
+    <div id="page">
+
+        <h:form>
+            <h:inputText id="username" value="#{RegistrationRequest.username}">
+                <f:validateLength minimum="3" maximum="15"/>
+            </h:inputText>
+
+            <h:inputText id="passwd" value="#{RegistrationRequest.passwd}">
+                <f:validateLength minimum="3" maximum="15"/>
+            </h:inputText>
+
+            <h:inputText id="cpasswd" value="#{RegistrationRequest.cpasswd}">
+                <f:validateLength minimum="3" maximum="15"/>
+            </h:inputText>
+
+            <h:inputText id="email" value="#{RegistrationRequest.email}">
+                <f:validateLength minimum="3" maximum="15"/>
+            </h:inputText>
+
+            <h:inputText id="bdate" value="#{RegistrationRequest.bdate}">
+                <f:validateLength minimum="3" maximum="15"/>
+            </h:inputText>
+
+            <h:inputText id="name" value="#{RegistrationRequest.name}">
+                <f:validateLength minimum="3" maximum="15"/>
+            </h:inputText>
+
+            <h:inputText id="surname" value="#{RegistrationRequest.surname}">
+                <f:validateLength minimum="3" maximum="15"/>
+            </h:inputText>
+
+            <h:commandButton value="Register" action="#{registerController.register}"/>
+        </h:form>
+
+        <h:outputText value="#{msg['jaz.app.name']}"/>
+    </div>
+
+</h:body>
+</html>
