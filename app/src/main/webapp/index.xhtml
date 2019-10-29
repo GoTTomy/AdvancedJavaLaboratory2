@@ -6,13 +6,45 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html">
 
+<style type="">
+    #page{
+        margin-left: auto;
+        margin-right: auto;
+        text-align: center;
+        width: 300px
+    }
+    #page div{
+        border-radius: 25px;
+        border-style: solid;
+        border-color: white;
+        margin-top: 5px
+    }
+    input{
+        margin-bottom: 10px
+    }
+    body{
+        background-image: url("123.jpg");
+        background-repeat:no-repeat;
+        background-size:cover;
+    }
+    #page p{
+        color: white;
+    }
+    commandButton{
+        margin-bottom: 10px;
+        height: 50px;
+        weight: 300px;
+    }
+
+</style>
+
 <h:head>
     <title>Allezon</title>
     <h:outputStylesheet name="main.css" library="css" />
 </h:head>
 
 <h:body>
-    <h2>Witaj w aplikacji!!</h2>
+    <div><center><h2>#{loginRequest.username} witaj w aplikacji!!</h2></center></div>
 </h:body>
 
 </html>

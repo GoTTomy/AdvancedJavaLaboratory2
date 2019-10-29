@@ -5,7 +5,37 @@
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:f="http://xmlns.jcp.org/jsf/core"
 >
+<style type="">
+    #page{
+        margin-left: auto;
+        margin-right: auto;
+        text-align: center;
+        width: 300px
+    }
+    #page div{
+        border-radius: 25px;
+        border-style: solid;
+        border-color: white;
+        margin-top: 5px
+    }
+    input{
+        margin-bottom: 10px
+    }
+    body{
+        background-image: url("123.jpg");
+        background-repeat:no-repeat;
+        background-size:cover;
+    }
+    #page p{
+        color: white;
+    }
+    commandButton{
+        margin-bottom: 10px;
+        height: 50px;
+        weight: 300px;
+    }
 
+</style>
 <h:head>
     <h:outputStylesheet name="main.css" library="css"/>
 </h:head>
@@ -15,33 +45,74 @@
     <div id="page">
 
         <h:form>
-            <h:inputText id="username" value="#{RegistrationRequest.username}">
-                <f:validateLength minimum="3" maximum="15"/>
-            </h:inputText>
-
-            <h:inputText id="passwd" value="#{RegistrationRequest.passwd}">
-                <f:validateLength minimum="3" maximum="15"/>
-            </h:inputText>
-
-            <h:inputText id="cpasswd" value="#{RegistrationRequest.cpasswd}">
-                <f:validateLength minimum="3" maximum="15"/>
-            </h:inputText>
-
-            <h:inputText id="email" value="#{RegistrationRequest.email}">
-                <f:validateLength minimum="3" maximum="15"/>
-            </h:inputText>
-
-            <h:inputText id="bdate" value="#{RegistrationRequest.bdate}">
-                <f:validateLength minimum="3" maximum="15"/>
-            </h:inputText>
-
-            <h:inputText id="name" value="#{RegistrationRequest.name}">
-                <f:validateLength minimum="3" maximum="15"/>
-            </h:inputText>
-
-            <h:inputText id="surname" value="#{RegistrationRequest.surname}">
-                <f:validateLength minimum="3" maximum="15"/>
-            </h:inputText>
+            <div >
+                <p>Nazwa Uzytkownika:</p>
+                <f:validateRegex pattern="((?=.*[a-z])(?=.*[A-Z]).{2,50})">
+                    <h:inputText
+                            id="username"
+                            value="#{registrationRequest.username}"
+                            validatorMessage="Wprowadzono nie poprawną nazwę użytkownika"
+                    />
+                </f:validateRegex>
+            </div>
+            <div>
+                <p>Haslo:</p>
+                <f:validateRegex pattern="((?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{5,30})">
+                    <h:inputSecret
+                            id="passwd"
+                            value="#{registrationRequest.passwd}"
+                            validatorMessage="Podane hasło nie jest poprawne!"
+                    />
+                </f:validateRegex>
+            </div>
+            <div>
+                <p>Potwierdz Hasło:</p>
+                <f:validateRegex pattern="((?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{5,30})">
+                    <h:inputSecret
+                            id="cpasswd"
+                            value="#{registrationRequest.cpsswd}"
+                            validatorMessage="Ponownie podane hasło nie jest poprawne!"
+                    />
+                </f:validateRegex>
+            </div>
+            <div>
+                <p>Email</p>
+                <f:validateRegex pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,30})$">
+                    <h:inputText
+                            id="email"
+                            value="#{registrationRequest.email}"
+                            validatorMessage="Podany email jest nie poprawny!"
+                    />
+                </f:validateRegex>
+            </div>
+            <div>
+                    <p>Data Urodzin:</p>
+                    <h:inputText
+                            id="bdate"
+                            value="#{registrationRequest.bdate}"
+                            validatorMessage="Podana data narodzin jest nie poprawna! zastosuj dd/mm/yyyy"
+                    />
+            </div>
+            <div>
+                <p>Imie:</p>
+                <f:validateRegex pattern="((?=.*[a-z])(?=.*[A-Z]).{2,50})">
+                    <h:inputText
+                            id="name"
+                            value="#{registrationRequest.name}"
+                            validatorMessage="Podane Imie jest nie poprawne!"
+                    />
+                </f:validateRegex>
+            </div>
+            <div>
+                <p>Nazwisko:</p>
+                <f:validateRegex pattern="((?=.*[a-z])(?=.*[A-Z]).{2,50})">
+                    <h:inputText
+                            id="surname"
+                            value="#{registrationRequest.surname}"
+                            validatorMessage="Podane nazwisko jest nie poprawne!"
+                    />
+                </f:validateRegex>
+            </div>
 
             <h:commandButton value="Register" action="#{registerController.register}"/>
         </h:form>

@@ -6,6 +6,38 @@
       xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:f="http://xmlns.jcp.org/jsf/core"
 >
 
+<style type="">
+    #page{
+        margin-left: auto;
+        margin-right: auto;
+        text-align: center;
+        width: 300px
+    }
+    #page div{
+        border-radius: 25px;
+        border-style: solid;
+        border-color: white;
+        margin-top: 5px
+    }
+    input{
+        margin-bottom: 10px
+    }
+    body{
+        background-image: url("123.jpg");
+        background-repeat:no-repeat;
+        background-size:cover;
+    }
+    #page p{
+        color: white;
+    }
+    commandButton{
+        margin-bottom: 10px;
+        height: 50px;
+        weight: 300px;
+    }
+
+</style>
+
 <h:head>
     <h:outputStylesheet name="main.css" library="css"/>
 </h:head>
@@ -15,14 +47,20 @@
     <div id="page">
 
         <h:form>
+        <div>
+            <p>Login:</p>
             <h:inputText id="username" value="#{loginRequest.username}">
                 <f:validateLength minimum="3" maximum="15"/>
-                <!-- https://regex101.com/ -->
-                <!--                <f:validateRegex pattern="^[a-z]+$"/>-->
             </h:inputText>
+        </div>
+        <div>
+            <p>Haslo:</p>
             <h:message for="username"/>
             <h:inputSecret value="#{loginRequest.password}"/>
+        </div>
+        <div>
             <h:commandButton value="Login" action="#{loginController.login}"/>
+        </div>
         </h:form>
 
         <h:outputText value="#{msg['jaz.app.name']}"/>
