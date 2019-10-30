@@ -17,24 +17,30 @@
         border-radius: 25px;
         border-style: solid;
         border-color: white;
-        margin-top: 5px
+        margin-top: 5px;
+    }
+    form{
+        border-radius: 60px;
+        background-color: darksalmon;
     }
     input{
-        margin-bottom: 10px
+        margin-bottom: 10px;
+        border-radius: 5px;
+        height: 20px;
+    }
+    head{
+        background-image: url("logo.png");
     }
     body{
-        background-image: url("123.jpg");
+        background-image: url("background.jpg");
         background-repeat:no-repeat;
         background-size:cover;
     }
     #page p{
         color: white;
+        font-weight: bold;
     }
-    commandButton{
-        margin-bottom: 10px;
-        height: 50px;
-        weight: 300px;
-    }
+
 
 </style>
 
@@ -43,24 +49,21 @@
 </h:head>
 
 <h:body>
-
+    <center><img src="Logo.png" alt="Logo" style=" width: auto; height: auto; align-content: center"/></center>
     <div id="page">
 
         <h:form>
+        <br/>
         <div>
             <p>Login:</p>
-            <h:inputText id="username" value="#{loginRequest.username}">
-                <f:validateLength minimum="3" maximum="15"/>
-            </h:inputText>
+            <h:inputText id="username" value="#{loginRequest.username}"/>
         </div>
         <div>
             <p>Haslo:</p>
             <h:message for="username"/>
             <h:inputSecret value="#{loginRequest.password}"/>
-        </div>
-        <div>
-            <h:commandButton value="Login" action="#{loginController.login}"/>
-        </div>
+        </div><br/>
+            <h:commandButton value="Login" action="#{loginController.login}" style = "width: 150px; height: 50px; border-radius: 10px;"/>
         </h:form>
 
         <h:outputText value="#{msg['jaz.app.name']}"/>

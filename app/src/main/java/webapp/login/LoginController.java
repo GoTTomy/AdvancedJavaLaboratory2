@@ -1,5 +1,4 @@
 package webapp.login;
-
 import login.LoginRequest;
 import webapp.User;
 import webapp.UserMapBean;
