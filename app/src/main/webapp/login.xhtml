@@ -64,10 +64,9 @@
             <h:inputSecret value="#{loginRequest.password}"/>
         </div><br/>
             <h:commandButton value="Login" action="#{loginController.login}" style = "width: 150px; height: 50px; border-radius: 10px;"/>
+            <p style="padding-bottom: 10px"><a href="register.xhtml">Nie masz konta? Zarejestruj sie!</a></p>
         </h:form>
-
         <h:outputText value="#{msg['jaz.app.name']}"/>
     </div>
-
 </h:body>
 </html>

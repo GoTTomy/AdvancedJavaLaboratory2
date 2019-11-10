@@ -1,7 +1,6 @@
 package webapp;
 
 import javax.enterprise.context.ApplicationScoped;
-import javax.enterprise.inject.Model;
 import java.util.HashMap;
 
 
