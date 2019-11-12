@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
-@WebFilter("/LoginFilter")
+@WebFilter("*")
 public class LoginFilter extends HttpFilter {
     @Override
     protected void doFilter(HttpServletRequest req, HttpServletResponse res, FilterChain chain) throws IOException, ServletException {
@@ -18,9 +18,10 @@ public class LoginFilter extends HttpFilter {
         HttpServletResponse response = (HttpServletResponse) res;
         HttpSession session = request.getSession(false);
         String loginURI = request.getContextPath() + "/login.xhtml";
+        String registerURI = request.getContextPath() + "/register.xhtml";
 
-        boolean loggedIn = session != null && session.getAttribute("user") != null;
-        boolean loginRequest = request.getRequestURI().equals(loginURI);
+        boolean loggedIn = session != null && session.getAttribute("username") != null;
+        boolean loginRequest = request.getRequestURI().equals(loginURI) || request.getRequestURI().equals(registerURI);;
         boolean resourceRequest = request.getRequestURI().startsWith(request.getContextPath() + ResourceHandler.RESOURCE_IDENTIFIER);
 
         if (loggedIn || loginRequest || resourceRequest) {

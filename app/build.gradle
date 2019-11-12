@@ -4,7 +4,7 @@ plugins {
 }
 
 war{
-   archivesBaseName = 'app.war' 
+    archivesBaseName = 'app.war'
 }
 
 group 'pl.pjatk.edu.jazapp'
@@ -17,7 +17,6 @@ repositories {
 }
 
 dependencies {
-    implementation 'javax:javaee-api:8.0'
     implementation 'javax:javaee-api:8.0'
     implementation 'org.slf4j:slf4j-api:1.7.28'
     implementation 'org.postgresql:postgresql:42.2.8'
