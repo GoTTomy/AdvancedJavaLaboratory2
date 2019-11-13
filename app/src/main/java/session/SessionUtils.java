@@ -28,12 +28,4 @@ public class SessionUtils {
         String fullName = session.getAttribute("name").toString() + " " + session.getAttribute("surrname".toString());
         return fullName;
     }
-
-    public static String getUserToken() {
-        HttpSession session = getSession();
-        if (session != null)
-            return (String) session.getAttribute("token");
-        else
-            return null;
-    }
 }

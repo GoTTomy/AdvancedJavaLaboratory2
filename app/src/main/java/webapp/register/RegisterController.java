@@ -1,8 +1,7 @@
 package webapp.register;
 
 import register.RegistrationRequest;
-import webapp.User;
-import webapp.UserMapBean;
+import webapp.user.UserDB;
 
 import javax.enterprise.context.RequestScoped;
 import javax.faces.context.FacesContext;
@@ -21,20 +20,28 @@ public class RegisterController
     private RegistrationRequest registrationRequest;
 
     @Inject
-    UserMapBean userMapBean;
+    UserDB userDB = new UserDB();
 
     public void register()
     {
-        User user = new User(registrationRequest.getName(),registrationRequest.getSurname(),registrationRequest.getUsername(),registrationRequest.getPasswd(),registrationRequest.getCpsswd(),registrationRequest.getEmail(),registrationRequest.getBdate());
-        userMapBean.add(user);
-
-        try
-        {
-            context.getExternalContext().redirect("login.xhtml");
+        if(userDB.checkifUsernameIsUnique(registrationRequest.getUsername())) {
+            if(registrationRequest.getPasswd().equals(registrationRequest.getCpsswd())) {
+                //var profile = new ProfileEntity(username, password, name, surrname,email, dateOfBirth);
+                userDB.addUser(registrationRequest.getUsername(), registrationRequest.getPasswd(), registrationRequest.getName(),
+                        registrationRequest.getSurname(),
+                        registrationRequest.getEmail(), registrationRequest.getBdate());
+                try {
+                    context.getExternalContext().redirect("login.xhtml");
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+            else{
+                System.out.println("Passwords doesn't match!");
+            }
         }
-        catch (IOException e)
-        {
-            e.printStackTrace();
+        else{
+            System.out.println("This username is already taken!");
         }
     }
 }

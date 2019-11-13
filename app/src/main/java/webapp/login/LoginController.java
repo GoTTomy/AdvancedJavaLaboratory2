@@ -1,10 +1,11 @@
 package webapp.login;
 import login.LoginRequest;
 import session.SessionUtils;
-import webapp.User;
-import webapp.UserMapBean;
+import webapp.user.User;
+import webapp.user.UserDB;
 
 import javax.enterprise.context.RequestScoped;
+import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -17,18 +18,38 @@ public class LoginController {
     private LoginRequest loginRequest;
 
     @Inject
-    UserMapBean userMapBean;
+    UserDB userDB = new UserDB();
 
     public String login() {
-        if (userMapBean.ifThereIs(loginRequest.getUsername())) {
-            if (userMapBean.doesPasswordMatch(loginRequest.getUsername(), loginRequest.getPassword())) {
-                HttpSession session= SessionUtils.getSession();
-                session.setAttribute("username",User.getUsername());
+        String username = userDB.getUsername(loginRequest.getUsername());
+        String password = userDB.getPassword(loginRequest.getPassword());
+        if((username!=null && password != null ) && (!"notFound".equalsIgnoreCase(username) && !"notFound".equalsIgnoreCase(password))) {
+            if (username.equals(loginRequest.getUsername()) && password.equals(loginRequest.getPassword())) {
+                HttpSession session = SessionUtils.getSession();
+                session.setAttribute("username", loginRequest.getUsername());
+                session.setAttribute("name", User.getName());
+                session.setAttribute("surrname", User.getSurrname());
+                session.setAttribute("fullname", SessionUtils.getFullName());
+                var tryLogin = "User: " + loginRequest.getUsername() + " tried to login with pass: " + loginRequest.getPassword() + " [SUCCESS] ";
+                System.out.println(tryLogin);
                 return "true";
             } else {
+                FacesContext.getCurrentInstance().addMessage(
+                        null,
+                        new FacesMessage(FacesMessage.SEVERITY_WARN,
+                                "Incorrect data",
+                                "Username or password seems invalid"));
+                var tryLogin = "User: " + loginRequest.getUsername() + " tried to login with pass: " + loginRequest.getPassword() + " [FAILURE] ";
+                System.out.println(tryLogin);
                 return "false";
             }
-        } else {
+        }
+        else{
+            FacesContext.getCurrentInstance().addMessage(
+                    null,
+                    new FacesMessage(FacesMessage.SEVERITY_WARN,
+                            "Incorrect data",
+                            "User does not exist"));
             return "false";
         }
     }

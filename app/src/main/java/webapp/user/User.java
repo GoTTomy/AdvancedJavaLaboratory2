@@ -1,9 +1,9 @@
-package webapp;
+package webapp.user;
 
 import java.util.UUID;
 
 public class User {
-    private static String name,surname,username,passwd,cpsswd,bdate,email,token;
+    private static String name,surname,username,passwd,cpsswd,bdate,email;
     public User(String name,String surname, String username, String passwd, String cpsswd, String bdate, String email){
         this.name = name;
         this.surname=surname;
@@ -12,7 +12,6 @@ public class User {
         this.cpsswd=cpsswd;
         this.bdate=bdate;
         this.email=email;
-        generateToken();
     }
 
     public static String getUsername() {
@@ -69,14 +68,5 @@ public class User {
 
     public void setEmail(String email) {
         this.email = email;
-    }
-
-    public static String getToken(){
-        return token;
-    }
-
-    public void generateToken(){
-        String token = UUID.randomUUID().toString();
-        this.token = token;
     }
 }
