@@ -3,23 +3,17 @@ package auth;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "profile", schema="public")
+@Table(name = "profile")
 public class ProfileEntity {
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
     private Long id;
 
-    @Column(name="username")
     private String username;
-    @Column(name="password")
     private String password;
-    @Column(name="name")
     private String name;
-    @Column(name="surrname")
     private String surrname;
-    @Column(name="email")
     private String email;
-    @Column(name="dateOfBirth")
     private String dateOfBirth;
 
     public ProfileEntity()
