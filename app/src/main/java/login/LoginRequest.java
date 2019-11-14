@@ -2,12 +2,11 @@ package login;
 
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Named;
-import java.util.UUID;
 
 @Named
 @RequestScoped
 public class LoginRequest {
-    private String username,password,token;
+    private String username,password;
 
     public String getUsername() {
         return username;

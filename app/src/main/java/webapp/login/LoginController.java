@@ -23,13 +23,10 @@ public class LoginController {
     public String login() {
         String username = userDB.getUsername(loginRequest.getUsername());
         String password = userDB.getPassword(loginRequest.getPassword());
-        if((username!=null && password != null ) && (!"notFound".equalsIgnoreCase(username) && !"notFound".equalsIgnoreCase(password))) {
+        if((!"notFound".equalsIgnoreCase(username) && !"notFound".equalsIgnoreCase(password))) {
             if (username.equals(loginRequest.getUsername()) && password.equals(loginRequest.getPassword())) {
                 HttpSession session = SessionUtils.getSession();
                 session.setAttribute("username", loginRequest.getUsername());
-                session.setAttribute("name", User.getName());
-                session.setAttribute("surrname", User.getSurrname());
-                session.setAttribute("fullname", SessionUtils.getFullName());
                 var tryLogin = "User: " + loginRequest.getUsername() + " tried to login with pass: " + loginRequest.getPassword() + " [SUCCESS] ";
                 System.out.println(tryLogin);
                 return "true";
