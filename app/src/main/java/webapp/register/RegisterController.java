@@ -1,5 +1,6 @@
 package webapp.register;
 
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import register.RegistrationRequest;
 import webapp.user.UserDB;
 
@@ -26,8 +27,10 @@ public class RegisterController
     {
         if(userDB.checkifUsernameIsUnique(registrationRequest.getUsername())) {
             if(registrationRequest.getPasswd().equals(registrationRequest.getCpsswd())) {
-                //var profile = new ProfileEntity(username, password, name, surrname,email, dateOfBirth);
-                userDB.addUser(registrationRequest.getUsername(), registrationRequest.getPasswd(), registrationRequest.getName(),
+                var passwordEncoder = new BCryptPasswordEncoder();
+                final String hashedPasswd = passwordEncoder.encode(registrationRequest.getPasswd());
+
+                userDB.addUser(registrationRequest.getUsername(), hashedPasswd, registrationRequest.getName(),
                         registrationRequest.getSurname(),
                         registrationRequest.getEmail(), registrationRequest.getBdate());
                 try {

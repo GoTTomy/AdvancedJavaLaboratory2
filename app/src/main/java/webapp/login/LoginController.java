@@ -1,5 +1,6 @@
 package webapp.login;
 import login.LoginRequest;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import session.SessionUtils;
 import webapp.user.User;
 import webapp.user.UserDB;
@@ -22,26 +23,30 @@ public class LoginController {
 
     public String login() {
         String username = userDB.getUsername(loginRequest.getUsername());
-        String password = userDB.getPassword(loginRequest.getPassword());
+        String password = userDB.getPassword(loginRequest.getUsername());
         if((!"notFound".equalsIgnoreCase(username) && !"notFound".equalsIgnoreCase(password))) {
-            if (username.equals(loginRequest.getUsername()) && password.equals(loginRequest.getPassword())) {
+            var passwordEncoder = new BCryptPasswordEncoder();
+            if (username.equals(loginRequest.getUsername()) && passwordEncoder.matches(loginRequest.getPassword(),password)) {
                 HttpSession session = SessionUtils.getSession();
                 session.setAttribute("username", loginRequest.getUsername());
-                var tryLogin = "User: " + loginRequest.getUsername() + " tried to login with pass: " + loginRequest.getPassword() + " [SUCCESS] ";
+                var tryLogin = "User: " + loginRequest.getUsername() + " tried to login with pass: " + passwordEncoder.encode(loginRequest.getPassword()) + " [SUCCESS] ";
                 System.out.println(tryLogin);
                 return "true";
             } else {
+                var tryLogin = "User: " + loginRequest.getUsername() + " tried to login with pass: " + passwordEncoder.encode(loginRequest.getPassword()) + " [FAILURE] ";
+                System.out.println(tryLogin);
                 FacesContext.getCurrentInstance().addMessage(
                         null,
                         new FacesMessage(FacesMessage.SEVERITY_WARN,
                                 "Incorrect data",
                                 "Username or password seems invalid"));
-                var tryLogin = "User: " + loginRequest.getUsername() + " tried to login with pass: " + loginRequest.getPassword() + " [FAILURE] ";
-                System.out.println(tryLogin);
                 return "false";
             }
         }
         else{
+            var passwordEncoder = new BCryptPasswordEncoder();
+            var tryLogin = "User: " + loginRequest.getUsername() + " tried to login with pass: " + passwordEncoder.encode(loginRequest.getPassword()) + " [FAILURE] ";
+            System.out.println(tryLogin);
             FacesContext.getCurrentInstance().addMessage(
                     null,
                     new FacesMessage(FacesMessage.SEVERITY_WARN,
@@ -56,5 +61,4 @@ public class LoginController {
         session.invalidate();
         return "true";
     }
-
 }
