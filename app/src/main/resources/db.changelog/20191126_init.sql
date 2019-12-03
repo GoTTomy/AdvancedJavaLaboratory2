@@ -10,7 +10,7 @@ CREATE table category
     name varchar not null ,
     description varchar not null ,
     section_id BIGINT not null,
-    FOREIGN KEY (section_id) REFERENCES section(id)
+    FOREIGN KEY (section_id) REFERENCES section(section_id)
 );
 
 create table photo
@@ -28,7 +28,7 @@ CREATE table auction
     profile_id BIGINT not null,
     category_id BIGINT not null,
     FOREIGN KEY (profile_id) REFERENCES profile (id),
-    foreign key (category_id) REFERENCES category (id)
+    foreign key (category_id) REFERENCES category (category_id)
 );
 
 
@@ -36,8 +36,8 @@ create table auction_photo
 (
     auction_id BIGINT not null ,
     photo_id BIGINT not null,
-    FOREIGN KEY (auction_id) REFERENCES auction (id),
-    foreign key (photo_id) REFERENCES photo (id)
+    FOREIGN KEY (auction_id) REFERENCES auction (auction_id),
+    foreign key (photo_id) REFERENCES photo (photo_id)
 );
 
 create table parameter
@@ -50,6 +50,6 @@ create table auction_parameter
     auction_id  BIGINT NOT NULL ,
     parameter_id  BIGINT NOT NULL ,
     values varchar not null,
-    FOREIGN KEY (auction_id) REFERENCES auction (id),
-    foreign key (parameter_id) REFERENCES parameter (id)
+    FOREIGN KEY (auction_id) REFERENCES auction (auction_id),
+    foreign key (parameter_id) REFERENCES parameter (parameter_id)
 );

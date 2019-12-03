@@ -11,6 +11,11 @@ import java.util.List;
 @RequestScoped
 public class ListSectionController {
     public List<SectionEntity> getSection(){
-        return new ArrayList<>();
+        var sections = new ArrayList<SectionEntity>();
+        sections.add(new SectionEntity(1L,"Section1"));
+        sections.add(new SectionEntity(2L,"Section2"));
+        sections.add(new SectionEntity(3L,"Section3"));
+        sections.add(new SectionEntity(4L,"Section4"));
+        return sections;
     }
 }
