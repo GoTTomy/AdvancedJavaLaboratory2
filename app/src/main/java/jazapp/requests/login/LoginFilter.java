@@ -1,4 +1,4 @@
-package jazapp.login;
+package jazapp.requests.login;
 
 import javax.faces.application.ResourceHandler;
 import javax.servlet.FilterChain;

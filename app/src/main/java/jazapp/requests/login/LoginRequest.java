@@ -1,4 +1,4 @@
-package jazapp.login;
+package jazapp.requests.login;
 
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Named;

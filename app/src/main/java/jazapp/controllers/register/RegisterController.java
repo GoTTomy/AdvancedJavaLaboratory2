@@ -1,5 +1,6 @@
-package jazapp.register;
+package jazapp.controllers.register;
 
+import jazapp.requests.register.RegistrationRequest;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import jazapp.user.UserDB;
 
