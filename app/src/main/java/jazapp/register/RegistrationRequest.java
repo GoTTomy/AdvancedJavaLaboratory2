@@ -1,4 +1,4 @@
-package register;
+package jazapp.register;
 
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Named;

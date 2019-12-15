@@ -1,6 +1,6 @@
-package admin.section.list;
+package jazapp.section.list;
 
-import admin.section.SectionEntity;
+import jazapp.section.SectionEntity;
 
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Named;

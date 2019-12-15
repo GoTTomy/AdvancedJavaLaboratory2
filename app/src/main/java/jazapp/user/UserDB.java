@@ -1,6 +1,6 @@
-package webapp.user;
+package jazapp.user;
 
-import auth.ProfileEntity;
+import jazapp.auth.ProfileEntity;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.persistence.EntityManager;

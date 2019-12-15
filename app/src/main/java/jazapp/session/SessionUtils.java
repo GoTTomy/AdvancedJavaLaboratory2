@@ -1,4 +1,4 @@
-package session;
+package jazapp.session;
 
 import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpServletRequest;

@@ -1,4 +1,4 @@
-package webapp.user;
+package jazapp.user;
 
 import java.util.UUID;
 

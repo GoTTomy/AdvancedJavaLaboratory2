@@ -1,4 +1,4 @@
-package admin.section;
+package jazapp.section;
 
 public class SectionEntity {
     private Long id;
