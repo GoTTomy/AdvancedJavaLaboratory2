@@ -16,7 +16,7 @@
         <setting name="validation-enabled" value="true" />
         <setting name="provider-name" value="Hibernate" />
         <datasource-mapping>
-          <factory-entry name="Entities" value="f112247e-8fd3-439f-a787-8df65f31a081" />
+          <factory-entry name="Entities" value="c1edbf6d-55a7-45b3-a4be-24989eb2608f" />
         </datasource-mapping>
         <naming-strategy-map />
         <deploymentDescriptor name="orm.xml" url="file://$MODULE_DIR$/META-INF/orm.xml" />

@@ -1,8 +1,6 @@
-package jazapp.controllers.login;
-import jazapp.requests.login.LoginRequest;
+package jazapp.session;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import jazapp.session.SessionUtils;
-import jazapp.user.UserDB;
+import jazapp.webapp.UserDB;
 
 import javax.enterprise.context.RequestScoped;
 import javax.faces.application.FacesMessage;

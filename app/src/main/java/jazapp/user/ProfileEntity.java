@@ -1,4 +1,4 @@
-package jazapp.auth;
+package jazapp.user;
 
 import javax.persistence.*;
 
