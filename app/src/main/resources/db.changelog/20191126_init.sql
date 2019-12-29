@@ -25,8 +25,10 @@ CREATE table auction
     title varchar not null ,
     description varchar not null ,
     price money not null,
+    photo_id bigint not null,
     profile_id BIGINT not null,
     category_id BIGINT not null,
+    FOREIGN KEY (photo_id) REFERENCES photo(photo_id),
     FOREIGN KEY (profile_id) REFERENCES profile (id),
     foreign key (category_id) REFERENCES category (category_id)
 );

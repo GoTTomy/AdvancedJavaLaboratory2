@@ -42,7 +42,7 @@ public class CategoryController {
     public String save()
     {
         var category = new CategoryEntity(categoryRequest.getId(), categoryRequest.getName(), categoryRequest.getDescription());
-        category.setSection_id(categoryRequest.getSectionId());
+        category.setSection_id(categoryRequest.getSection_Id());
         categoryDAO.save(category);
         return "/list-category.xhtml?faces-redirect=true";
     }

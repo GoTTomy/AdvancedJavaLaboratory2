@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:form="http://www.springframework.org/tags/form" xmlns:c="http://java.sun.com/jsp/jstl/core">
+<h:body>
+    <ui:composition template="templates/base.xhtml">
+        <ui:param name="title" value="Edit door"/>
+        <ui:define name="content">
+            <div class="text-center">
+                <h:outputLabel rendered="#{flash.containsKey('error-message')}"
+                               styleClass="alert alert-danger" value="#{flash['error-message']}"/>
+                <h:form styleClass="form-base">
+                    <f:attribute name="auctionId" value="#{auctionController.auctionRequest.id}"/>
+                    <h:inputHidden value="#{auctionController.auctionRequest.id}" />
+                    <div class="form-group">
+
+                        <h:inputText id="auction-title" styleClass="form-control" a:placeholder="Nazwa" value="#{auctionController.auctionRequest.title}"/>
+                        <h:inputText id="auction-desc" styleClass="form-control" a:placeholder="Opis" value="#{auctionController.auctionRequest.description}"/>
+                        <h:inputText id="auction-price" styleClass="form-control" a:placeholder="Cena" value="#{auctionController.auctionRequest.price}"/>
+                        <h:selectOneMenu value="#{auctionController.auctionRequest.categoryId}" >
+                            <f:selectItems value="#{categoryController.categoryList}" var="category" itemLabel="#{category.name}" itemValue="#{category.id}" />
+                        </h:selectOneMenu>
+                        <h:inputText id="auction-photo" styleClass="form-control" a:placeholder="Url zdjęcia" value="#{auctionController.auctionRequest.photo}"/>
+                        <h:inputText id="auction-photo2" styleClass="form-control" a:placeholder="Url zdjęcia" value="#{auctionController.auctionRequest.photoTwo}"/>
+                        <h:inputText id="auction-photo3" styleClass="form-control" a:placeholder="Url zdjęcia" value="#{auctionController.auctionRequest.thirdPhoto}"/>
+                    </div>
+                    <h:commandButton styleClass="btn btn-primary" value="Save" action="#{auctionController.save}"/><br/><br/>
+                    <h:commandButton styleClass="btn btn-primary" value="Delete" action="#{auctionController.delete}"/><br/>
+                </h:form>
+            </div>
+        </ui:define>
+    </ui:composition>
+</h:body>
+</html>

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:c="http://java.sun.com/jsp/jstl/core">
+<h:head>
+    <title>Allezon</title>
+    <h:outputStylesheet name="main.css" library="css"/>
+</h:head>
+
+<h:body>
+    <h:form>
+        <div style="position: fixed; left: 40%;">
+            <h:commandButton action="#{pageController.welcomeForm}" styleClass="topScreenButtons"
+                             value="STRONA GŁÓWNA"/>
+            <h:commandButton action="#{pageController.showAuctionForm}" styleClass="topScreenButtons" value="AUKCJE"/>
+            <h:commandButton action="#{pageController.showProfileForm}" styleClass="topScreenButtons" value="PROFIL"/>
+            <h:commandButton action="#{pageController.editAuction}" styleClass="topScreenButtons"
+                             value="DODAJ AUKCJE"/>
+        </div>
+        <h:commandButton styleClass="loginButton" style="left: 100%" value="Logout" action="#{loginController.logout}"/>
+        <hr/>
+        <br/><br/>
+        <ui:repeat value="#{auctionController.auctionList}" var="auction">
+            <h:link styleClass="list-group-item list-group-item-action" outcome="show-auction">
+                <f:param name="auctionId" value="#{auction.auction_id}"/>
+                <div class="auctionBorder">
+                    <h:graphicImage url="#{auction.photo_id}" style="width: 7%"/>
+                    <h:outputText style="font-size: 170%; text-align: center" value="##{auction.auction_id} #{auction.title} Cena: #{auction.price}"/>
+                </div>
+            </h:link>
+            <hr/>
+        </ui:repeat>
+    </h:form>
+</h:body>
+</html>

@@ -28,4 +28,5 @@ public class SessionUtils {
         String fullName = session.getAttribute("name").toString() + " " + session.getAttribute("surrname".toString());
         return fullName;
     }
+
 }

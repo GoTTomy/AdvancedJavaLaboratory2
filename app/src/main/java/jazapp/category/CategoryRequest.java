@@ -4,7 +4,7 @@ import jazapp.section.SectionDAO;
 
 public class CategoryRequest {
     private Long id;
-    private Long sectionId;
+    private Long section_id;
     private String name;
     private String description;
 
@@ -13,14 +13,14 @@ public class CategoryRequest {
     }
     public CategoryRequest(Long id, Long sectionId, String name, String description){
         this.id=id;
-        this.sectionId=sectionId;
+        this.section_id=sectionId;
         this.name=name;
         this.description=description;
     }
 
     public CategoryRequest(CategoryEntity category) {
         this.id=category.getId();
-        this.sectionId=category.getSection_id();
+        this.section_id=category.getSection_id();
         this.name=category.getName();
         this.description=category.getDescription();
     }
@@ -29,8 +29,8 @@ public class CategoryRequest {
         return id;
     }
 
-    public Long getSectionId() {
-        return sectionId;
+    public Long getSection_Id() {
+        return section_id;
     }
 
     public String getName() {
@@ -45,8 +45,8 @@ public class CategoryRequest {
         this.id = id;
     }
 
-    public void setSectionId(Long sectionId) {
-        this.sectionId = sectionId;
+    public void setSection_Id(Long sectionId) {
+        this.section_id = sectionId;
     }
 
     public void setName(String name) {
