@@ -10,7 +10,7 @@ public class PhotoEntity
 {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    private Long photo_id;
 
     private String photo;
 
@@ -24,23 +24,23 @@ public class PhotoEntity
 
     public PhotoEntity(PhotoEntity photoEntity)
     {
-        this.id = photoEntity.getId();
+        this.photo_id = photoEntity.getPhoto_id();
         this.photo = photoEntity.getPhoto();
         this.auctionEntity = photoEntity.getAuctionEntity();
     }
 
-    public PhotoEntity(Long id, String photo)
+    public PhotoEntity(Long photo_id, String photo)
     {
-        this.id = id;
+        this.photo_id = photo_id;
         this.photo = photo;
     }
 
-    public Long getId() {
-        return id;
+    public Long getPhoto_id() {
+        return photo_id;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setPhoto_id(Long id) {
+        this.photo_id = id;
     }
 
     public String getPhoto() {

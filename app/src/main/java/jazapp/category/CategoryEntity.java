@@ -1,13 +1,15 @@
 package jazapp.category;
 
+import javax.inject.Named;
 import javax.persistence.*;
 
+@Named
 @Entity
 @Table(name="category")
 public class CategoryEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    private Long category_id;
 
     private String name,description;
     private Long section_id;
@@ -16,14 +18,14 @@ public class CategoryEntity {
 
     }
 
-    public CategoryEntity(Long id, String name, String description){
-        this.id=id;
+    public CategoryEntity(Long category_id, String name, String description){
+        this.category_id = category_id;
         this.name=name;
         this.description=description;
     }
 
-    public Long getId() {
-        return id;
+    public Long getCategory_id() {
+        return category_id;
     }
 
     public String getName() {
@@ -38,8 +40,8 @@ public class CategoryEntity {
         return section_id;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setCategory_id(Long id) {
+        this.category_id = id;
     }
 
     public void setName(String name) {

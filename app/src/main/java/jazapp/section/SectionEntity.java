@@ -6,31 +6,29 @@ import javax.persistence.*;
 @Table(name = "section")
 public class SectionEntity {
     @Id
-    @Column(name="section_id")
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    private Long section_id;
 
-    @Column(name="name")
     private String name;
 
     public SectionEntity(){
     }
 
-    public SectionEntity(Long id, String name){
-        this.id=id;
+    public SectionEntity(Long section_id, String name){
+        this.section_id = section_id;
         this.name=name;
     }
 
-    public Long getId(){
-        return id;
+    public Long getSection_id(){
+        return section_id;
     }
 
     public String getName() {
         return name;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setSection_id(Long id) {
+        this.section_id = id;
     }
 
     public void setName(String name) {

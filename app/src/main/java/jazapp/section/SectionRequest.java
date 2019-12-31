@@ -12,7 +12,7 @@ public class SectionRequest {
     }
 
     public SectionRequest(SectionEntity section) {
-        this.id = section.getId();
+        this.id = section.getSection_id();
         this.name=section.getName();
     }
 

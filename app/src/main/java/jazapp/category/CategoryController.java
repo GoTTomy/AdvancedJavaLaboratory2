@@ -1,6 +1,7 @@
 package jazapp.category;
 
 import jazapp.ParamRetriever;
+import jazapp.section.SectionRequest;
 
 import javax.inject.Inject;
 import java.util.List;

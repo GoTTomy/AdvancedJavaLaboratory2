@@ -9,17 +9,16 @@ public class ProfileEntity {
     @GeneratedValue(strategy= GenerationType.AUTO)
     private Long id;
 
-    @Column(name="username")
     private String username;
-    @Column(name="password")
+
     private String password;
-    @Column(name="name")
+
     private String name;
-    @Column(name="surname")
+
     private String surname;
-    @Column(name="email")
+
     private String email;
-    @Column(name="dateOfBirth")
+
     private String dateOfBirth;
 
     public ProfileEntity()

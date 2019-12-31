@@ -17,7 +17,7 @@ public class CategoryDAOImpl implements CategoryDAO{
     @Transactional
     public List<CategoryEntity> getCategoryList()
     {
-        return em.createQuery("FROM CategoryEntity ORDER BY id ASC ").getResultList();
+        return em.createQuery("FROM CategoryEntity ORDER BY category_id ASC ").getResultList();
     }
 
     @Override
@@ -32,7 +32,7 @@ public class CategoryDAOImpl implements CategoryDAO{
     @Transactional
     public void save(CategoryEntity categoryEntity)
     {
-        if (categoryEntity.getId() == null)
+        if (categoryEntity.getCategory_id() == null)
         {
             em.persist(categoryEntity);
         } else {
@@ -44,9 +44,9 @@ public class CategoryDAOImpl implements CategoryDAO{
     @Transactional
     public void delete(CategoryEntity categoryEntity)
     {
-        if (categoryEntity.getId() != null)
+        if (categoryEntity.getCategory_id() != null)
         {
-            var category = em.find(CategoryEntity.class, categoryEntity.getId());
+            var category = em.find(CategoryEntity.class, categoryEntity.getCategory_id());
             em.remove(category);
         }
         else

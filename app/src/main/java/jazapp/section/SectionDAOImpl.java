@@ -15,7 +15,7 @@ public class SectionDAOImpl implements SectionDAO{
     @Override
     @Transactional
     public List<SectionEntity> getSectionList(){
-        return entityManager.createQuery("FROM SectionEntity ORDER BY id ASC").getResultList();
+        return entityManager.createQuery("FROM SectionEntity ORDER BY section_id ASC").getResultList();
     }
 
     @Override
@@ -36,7 +36,7 @@ public class SectionDAOImpl implements SectionDAO{
     @Transactional
     public void save(SectionEntity sectionEntity)
     {
-        if (sectionEntity.getId() == null)
+        if (sectionEntity.getSection_id() == null)
         {
             entityManager.persist(sectionEntity);
         } else {
@@ -48,9 +48,9 @@ public class SectionDAOImpl implements SectionDAO{
     @Transactional
     public void delete(SectionEntity sectionEntity)
     {
-        if (sectionEntity.getId() != null)
+        if (sectionEntity.getSection_id() != null)
         {
-            var section = entityManager.find(SectionEntity.class,sectionEntity.getId());
+            var section = entityManager.find(SectionEntity.class,sectionEntity.getSection_id());
             entityManager.remove(section);
         }
         else

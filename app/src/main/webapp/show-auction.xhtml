@@ -6,13 +6,21 @@
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:c="http://java.sun.com/jsp/jstl/core">
+
+<style type="">
+    body{
+        background-image: url("background.jpg");
+        background-repeat:no-repeat;
+        background-size:cover;
+    }
+</style>
 <h:head>
     <title>Allezon</title>
     <h:outputStylesheet name="main.css" library="css"/>
 </h:head>
 
 <h:body>
-    <c:if test="#{findUserDAOImpl.getUserByUsername(pageController.userName) == auctionController.auctionRequest.profileId}">
+    <c:if test="#{findUserDAOImpl.getUserByUsername(pageController.userName) == auctionController.auctionRequest.profile_id}">
         <h:link value="Edit" styleClass="list-group-item list-group-item-action" outcome="edit-list-auction">
             <f:param name="auctionId" value="#{auctionController.auctionRequest.id}"/>
         </h:link>

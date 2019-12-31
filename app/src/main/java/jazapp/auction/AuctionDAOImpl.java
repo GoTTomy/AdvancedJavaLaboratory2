@@ -18,7 +18,7 @@ public class AuctionDAOImpl implements AuctionDAO{
     @Transactional
     public List<AuctionEntity> getAuctionList()
     {
-        return em.createQuery("FROM AuctionEntity ORDER BY id ASC ").getResultList();
+        return em.createQuery("FROM AuctionEntity ORDER BY auction_id ASC ").getResultList();
     }
 
     @Override
