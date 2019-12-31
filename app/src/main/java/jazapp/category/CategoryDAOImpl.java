@@ -1,11 +1,13 @@
 package jazapp.category;
 
+import javax.enterprise.context.ApplicationScoped;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
 import java.util.List;
 import java.util.Optional;
 
+@ApplicationScoped
 public class CategoryDAOImpl implements CategoryDAO{
     @PersistenceContext
     EntityManager em;

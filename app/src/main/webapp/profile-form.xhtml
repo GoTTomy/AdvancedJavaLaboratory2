@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html">
+
+<h:head>
+    <title>Allezon</title>
+    <h:outputStylesheet name="main.css" library="css"/>
+</h:head>
+
+<h:body>
+    <h:form>
+        <div style="position: fixed; left: 40%;">
+            <h:commandButton action="#{pageController.welcomeForm}" styleClass="topScreenButtons" value="STRONA GŁÓWNA"/>
+            <h:commandButton action="#{pageController.showAuctionForm}" styleClass="topScreenButtons" value="AUKCJE"/>
+            <h:commandButton action="#{pageController.showProfileForm}" styleClass="topScreenButtons" value="PROFIL" />
+        </div>
+        <h:commandButton style="left: 100%" value="Logout" action="#{loginController.logout}"/>
+        <div class="centered">
+            <div class="indexWelcomeBorder">
+                <h2>Profil</h2>
+            </div>
+        </div>
+
+    </h:form>
+</h:body>
+
+</html>

@@ -19,8 +19,8 @@ public class UserDB {
     }
 
     @Transactional
-    public void addUser(String username, String password, String name, String surrname, String email, String dateOfBirth){
-        var profile = new ProfileEntity(username, password, name, surrname,email, dateOfBirth);
+    public void addUser(String username, String password, String name, String surname, String email, String dateOfBirth){
+        var profile = new ProfileEntity(username, password, name, surname,email, dateOfBirth);
         //add profile to the database
         em.persist(profile);
     }

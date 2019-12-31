@@ -4,7 +4,7 @@ CREATE TABLE profile
 (
     id   BIGSERIAL NOT NULL,
     name VARCHAR   NOT NULL,
-    surrname VARCHAR   NOT NULL,
+    surname VARCHAR   NOT NULL,
     username VARCHAR   NOT NULL,
     password VARCHAR   NOT NULL,
     email VARCHAR   NOT NULL,

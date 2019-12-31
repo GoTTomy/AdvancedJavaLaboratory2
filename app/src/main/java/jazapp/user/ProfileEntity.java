@@ -15,8 +15,8 @@ public class ProfileEntity {
     private String password;
     @Column(name="name")
     private String name;
-    @Column(name="surrname")
-    private String surrname;
+    @Column(name="surname")
+    private String surname;
     @Column(name="email")
     private String email;
     @Column(name="dateOfBirth")
@@ -25,17 +25,17 @@ public class ProfileEntity {
     public ProfileEntity()
     {
         this.name = "";
-        this.surrname = "";
+        this.surname = "";
         this.username = "";
         this.password = "";
         this.email = "";
         this.dateOfBirth = "";
     }
-    public ProfileEntity(String username,String password,String name,String surrname,String email, String dateOfBirth){
+    public ProfileEntity(String username, String password, String name, String surname, String email, String dateOfBirth){
         this.username=username;
         this.password=password;
         this.name = name;
-        this.surrname=surrname;
+        this.surname = surname;
         this.email=email;
         this.dateOfBirth=dateOfBirth;
     }
@@ -56,8 +56,8 @@ public class ProfileEntity {
         return password;
     }
 
-    public String getSurrname() {
-        return surrname;
+    public String getSurname() {
+        return surname;
     }
 
     public String getEmail() {
@@ -80,8 +80,8 @@ public class ProfileEntity {
         this.name = name;
     }
 
-    public void setSurrname(String surrname) {
-        this.surrname = surrname;
+    public void setSurname(String surrname) {
+        this.surname = surrname;
     }
 
     public void setEmail(String email) {

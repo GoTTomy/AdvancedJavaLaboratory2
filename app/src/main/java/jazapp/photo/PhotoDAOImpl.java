@@ -1,5 +1,6 @@
 package jazapp.photo;
 
+import javax.enterprise.context.ApplicationScoped;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Named;
 import javax.persistence.EntityManager;
@@ -7,8 +8,7 @@ import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
 import java.util.List;
 
-@Named
-@RequestScoped
+@ApplicationScoped
 public class PhotoDAOImpl implements PhotoDAO
 {
     @PersistenceContext

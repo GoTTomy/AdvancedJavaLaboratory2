@@ -29,7 +29,7 @@ public class SectionDAOImpl implements SectionDAO{
     public Optional<SectionEntity> getSectionById(Long sectionId)
     {
         var section = entityManager.find(SectionEntity.class, sectionId);
-        return Optional.ofNullable(section); //TO ZWRACA PO ID
+        return Optional.ofNullable(section);
     }
 
     @Override
@@ -38,7 +38,7 @@ public class SectionDAOImpl implements SectionDAO{
     {
         if (sectionEntity.getId() == null)
         {
-            entityManager.persist(sectionEntity); // TO ZAPISUJE
+            entityManager.persist(sectionEntity);
         } else {
             entityManager.merge(sectionEntity);
         }

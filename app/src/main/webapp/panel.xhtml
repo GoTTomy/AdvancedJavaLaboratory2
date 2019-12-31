@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html" xmlns:s="http://java.sun.com/jsf/composite" xmlns:c="http://java.sun.com/jsp/jstl/core">
+
+<h:head>
+    <title>Allezon</title>
+    <h:outputStylesheet name="main.css" library="css"/>
+</h:head>
+
+<h:body>
+    <h:form>
+        <div style="position: fixed; left: 40%;">
+            <h:commandButton action="#{pageController.welcomeForm}" styleClass="topScreenButtons" value="STRONA GŁÓWNA"/>
+            <h:commandButton action="#{pageController.showAuctionForm}" styleClass="topScreenButtons" value="AUKCJE"/>
+            <h:commandButton action="#{pageController.showProfileForm}" styleClass="topScreenButtons" value="PROFIL" />
+        </div>
+        <h:commandButton styleClass="loginButton" style="left: 100%" value="Logout" action="#{loginController.logout}"/>
+            <c:if test = "#{pageController.isUserAnAdmin()}">
+                <div>
+                    <h:commandButton  action="#{pageController.editSection}" value="Edytuj sekcje" />
+                    <h:commandButton  action="#{pageController.editCategory}" value="Edytuj kategorie" />
+                </div>
+            </c:if>
+    </h:form>
+</h:body>
+
+</html>

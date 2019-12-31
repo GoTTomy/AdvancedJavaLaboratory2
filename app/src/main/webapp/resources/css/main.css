@@ -8,3 +8,14 @@ page {
     margin-bottom: auto;
     margin-top: auto;
 }
+
+ibutton {
+
+    background: transparent;
+    border: none !important;
+    font-size:0;
+}
+
+button {
+
+}

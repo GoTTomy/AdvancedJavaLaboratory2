@@ -33,50 +33,54 @@ public class PageController
         return  "/index.xhtml?faces-redirect=true";
     }
 
+    public Boolean isUserAnAdmin(){
+        String username = SessionUtils.getUsername();
+        if(username.equals("Halfdead")){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+
     public String adminAccess()
     {
-        String session = SessionUtils.getUsername();
-        System.out.println("############# " + findUserDAO.getUserByUsername(session));
-        if(session.equals("kepes12"))
+        if(isUserAnAdmin())
         {
-            System.out.println("REDIRECTING TO ADMIN PAGE");
-            return "/admin-panel.xhtml?faces-redirect=true";
+            System.out.println("Redirecting...");
+            return "/panel.xhtml?faces-redirect=true";
         }
         else
         {
-            System.out.println("NONONONO NO ACCESITO PANIE!");
+            System.out.println("Access wasn't granted.");
             return "/index.xhtml?faces-redirect=true";
         }
     }
 
     public String editCategory()
     {
-        String session = SessionUtils.getUsername();
-        System.out.println("############# " + session);
-        if(session.equals("kepes12"))
+        if(isUserAnAdmin())
         {
-            System.out.println("REDIRECTING TO ADMIN PAGE");
+            System.out.println("Redirecting...");
             return "/list-category.xhtml?faces-redirect=true";
         }
         else
         {
-            System.out.println("NONONONO NO ACCESITO PANIE!");
+            System.out.println("Access wasn't granted.");
             return "/index.xhtml?faces-redirect=true";
         }
     }
 
     public String editSection()
     {
-        String session = SessionUtils.getUsername();
-        System.out.println("############# " + session);
-        if(session.equals("kepes12"))
+        if(isUserAnAdmin())
         {
-            System.out.println("REDIRECTING TO ADMIN PAGE");
+            System.out.println("Redirecting...");
             return "/list-section.xhtml?faces-redirect=true";
         }
         else
         {
-            System.out.println("NONONONO NO ACCESITO PANIE!");
+            System.out.println("Access wasn't granted.");
             return "/index.xhtml?faces-redirect=true";
         }
     }
@@ -98,10 +102,8 @@ public class PageController
             return "/index.xhtml?faces-redirect=true";
         }
     }
-
     public String getUserName()
     {
         return SessionUtils.getUsername();
     }
-
 }

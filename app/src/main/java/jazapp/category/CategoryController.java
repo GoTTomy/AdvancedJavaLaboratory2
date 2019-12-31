@@ -30,9 +30,9 @@ public class CategoryController {
 
     private CategoryRequest createCategoryRequest()
     {
-        if (paramRetriever.contains("categoryId"))
+        if (paramRetriever.contains("category_id"))
         {
-            var categoryId = paramRetriever.getLong("categoryId");
+            var categoryId = paramRetriever.getLong("category_id");
             var category = categoryDAO.getCategoryById(categoryId).orElseThrow();
             return new CategoryRequest(category);
         }
