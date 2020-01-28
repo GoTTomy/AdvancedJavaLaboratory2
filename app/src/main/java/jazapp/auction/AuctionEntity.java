@@ -30,10 +30,6 @@ public class AuctionEntity
     @Column(name = "category_id")
     private Long categoryId;
 
-
-    @Column(name = "photo")//DO USUNIĘCIA
-    private String photo;
-
     @OneToMany(fetch = FetchType.EAGER, mappedBy="auctionEntity",
             cascade= {CascadeType.ALL})
     private List<PhotoEntity> photoEntities;
@@ -42,13 +38,12 @@ public class AuctionEntity
     {
     }
 
-    public AuctionEntity(Long id,String title, double price, String description, String photo,Long profileId,Long categoryId)
+    public AuctionEntity(Long id,String title, double price, String description,Long profileId,Long categoryId)
     {
         this.id = id;
         this.title = title;
         this.price = price;
         this.description = description;
-        this.photo = photo;
         this.profileId=profileId;
         this.categoryId=categoryId;
     }
@@ -99,14 +94,6 @@ public class AuctionEntity
 
     public void setCategoryId(Long categoryId) {
         this.categoryId = categoryId;
-    }
-
-    public String getPhoto() {
-        return photo;
-    }
-
-    public void setPhoto(String photo) {
-        this.photo = photo;
     }
 
     public List<PhotoEntity> getPhotoEntities() {

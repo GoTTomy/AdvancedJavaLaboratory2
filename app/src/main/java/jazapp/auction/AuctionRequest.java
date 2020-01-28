@@ -55,7 +55,6 @@ public class AuctionRequest
         this.profile_id = auction.getProfileId();
         this.categoryId = auction.getCategoryId();
         this.description = auction.getDescription();
-        this.photo = auction.getPhoto();
         this.photoEntity = auction.getPhotoEntities();
         this.photoTwo = auction.getPhotoEntities().get(1).getPhoto();
         this.thirdPhoto = auction.getPhotoEntities().get(2).getPhoto();

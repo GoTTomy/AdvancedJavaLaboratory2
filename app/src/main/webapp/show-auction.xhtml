@@ -20,7 +20,7 @@
 </h:head>
 
 <h:body>
-    <c:if test="#{findUserDAOImpl.getUserByUsername(pageController.userName) == auctionController.auctionRequest.profile_id}">
+    <c:if test="#{findUserDAOImpl.getUserByUsername(pageController.username) == auctionController.auctionRequest.profile_id}">
         <h:link value="Edit" styleClass="list-group-item list-group-item-action" outcome="edit-list-auction">
             <f:param name="auctionId" value="#{auctionController.auctionRequest.id}"/>
         </h:link>
