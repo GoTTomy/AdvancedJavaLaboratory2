@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
-      xmlns:ui="http://java.sun.com/jsf/facelets"
+<html
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:h="http://java.sun.com/jsf/html"
+        xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+        xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:f="http://java.sun.com/jsf/core"
+        xmlns:form="http://www.springframework.org/tags/form" xmlns:c="http://java.sun.com/jsp/jstl/core"
 >
 
 <head>
@@ -31,7 +33,10 @@
                     <div class="form-group">
                         <h:inputText id="category-name" styleClass="form-control" a:placeholder="Nazwa" value="#{categoryController.categoryRequest.name}"/>
                         <h:inputText id="category-disc" styleClass="form-control" a:placeholder="Opis" value="#{categoryController.categoryRequest.description}"/>
-                        <h:inputText id="category-secId" styleClass="form-control" a:placeholder="Sekcja" value="#{categoryController.categoryRequest.section_id}"/>
+                        <!--<h:inputText id="category-secId" styleClass="form-control" a:placeholder="Sekcja" value="#{categoryController.categoryRequest.section_id}"/>-->
+                        <h:selectOneMenu value="#{categoryController.categoryRequest.section_id}" >
+                            <f:selectItems value="#{sectionController.sectionList}" var="section" itemLabel="#{section.name}" itemValue="#{section.section_id}" />
+                        </h:selectOneMenu><br/>
                     </div>
                     <h:commandButton styleClass="btn btn-primary" value="Save" action="#{categoryController.save}"/><br/><br/>
                     <h:commandButton styleClass="btn btn-primary" value="Delete" action="#{categoryController.delete}"/><br/>

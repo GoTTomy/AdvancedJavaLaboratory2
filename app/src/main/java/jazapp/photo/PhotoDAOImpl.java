@@ -1,6 +1,5 @@
 package jazapp.photo;
 
-import javax.enterprise.context.ApplicationScoped;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Named;
 import javax.persistence.EntityManager;
@@ -8,7 +7,8 @@ import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
 import java.util.List;
 
-@ApplicationScoped
+@Named
+@RequestScoped
 public class PhotoDAOImpl implements PhotoDAO
 {
     @PersistenceContext
@@ -29,6 +29,9 @@ public class PhotoDAOImpl implements PhotoDAO
         {
             List<PhotoEntity> test = em.createNativeQuery("SELECT * FROM photo WHERE auction_id = " + auctionId,PhotoEntity.class).getResultList();
             return test.get(0).getPhoto();
+
+            //return em.createNativeQuery("SELECT photo FROM photo WHERE auction_id = " + auctionId).getSingleResult().toString();;
+            //return em.createQuery("FROM PhotoEntity  WHERE auctionEntity.id =: auctionId",PhotoEntity.class).setParameter("auctionId",auctionId).getSingleResult().getPhoto(); //CZEMU TO NIE DZIALA?
         }
         catch (Exception e)
         {

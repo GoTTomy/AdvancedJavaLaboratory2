@@ -13,6 +13,7 @@ CREATE table category
     FOREIGN KEY (section_id) REFERENCES section(section_id)
 );
 
+
 create table photo
 (
     photo_id   BIGSERIAL PRIMARY KEY ,
@@ -34,13 +35,6 @@ CREATE table auction
 );
 
 
-create table auction_photo
-(
-    auction_id BIGINT not null ,
-    photo_id BIGINT not null,
-    FOREIGN KEY (auction_id) REFERENCES auction (auction_id),
-    foreign key (photo_id) REFERENCES photo (photo_id)
-);
 
 create table parameter
 (
@@ -54,4 +48,12 @@ create table auction_parameter
     values varchar not null,
     FOREIGN KEY (auction_id) REFERENCES auction (auction_id),
     foreign key (parameter_id) REFERENCES parameter (parameter_id)
+);
+
+create table auction_photo
+(
+    auction_id BIGINT not null ,
+    photo_id BIGINT not null,
+    FOREIGN KEY (auction_id) REFERENCES auction (auction_id),
+    foreign key (photo_id) REFERENCES photo (photo_id)
 );

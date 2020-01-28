@@ -3,9 +3,13 @@ package jazapp.category;
 import jazapp.ParamRetriever;
 import jazapp.section.SectionRequest;
 
+import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
+import javax.inject.Named;
 import java.util.List;
 
+@Named
+@RequestScoped
 public class CategoryController {
     private CategoryRequest categoryRequest;
 
@@ -43,7 +47,7 @@ public class CategoryController {
     public String save()
     {
         var category = new CategoryEntity(categoryRequest.getId(), categoryRequest.getName(), categoryRequest.getDescription());
-        category.setSection_id(categoryRequest.getSection_Id());
+        category.setSection_id(categoryRequest.getSection_id());
         categoryDAO.save(category);
         return "/list-category.xhtml?faces-redirect=true";
     }

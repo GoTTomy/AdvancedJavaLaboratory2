@@ -25,7 +25,7 @@ public class SessionUtils {
     public static String getFullName(){
         HttpSession session = (HttpSession) FacesContext.getCurrentInstance()
                 .getExternalContext().getSession(false);
-        String fullName = session.getAttribute("name").toString() + " " + session.getAttribute("surrname".toString());
+        String fullName = session.getAttribute("name").toString() + " " + session.getAttribute("surname".toString());
         return fullName;
     }
 

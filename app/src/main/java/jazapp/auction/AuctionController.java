@@ -58,10 +58,14 @@ public class AuctionController
     {
         String username = SessionUtils.getUsername();
 
-        var auction = new AuctionEntity(auctionRequest.getId(),auctionRequest.getTitle(),auctionRequest.getPrice(), auctionRequest.getDescription(), auctionRequest.getPhoto());
-
+        var auction = new AuctionEntity(auctionRequest.getId(),auctionRequest.getTitle(),auctionRequest.getPrice(),
+                auctionRequest.getDescription(), auctionRequest.getPhoto(),auctionRequest.getProfileId(),auctionRequest.getCategoryId());
+        System.out.println("$$$$$$$$$$$$$$$$");
+        System.out.println(auctionRequest.getId());
+        System.out.println(auctionRequest.getCategoryId());
         List<PhotoEntity> photo = photoDAO.getByAuctionId(auctionRequest.getId());
-
+        System.out.println("%%%%%%%%%%%%%%%%");
+        System.out.println(photo);
         if(!photo.isEmpty())
         {
             photo.get(0).setPhoto(auctionRequest.getPhoto());
@@ -86,15 +90,17 @@ public class AuctionController
 
         assert username != null;
 
-        auction.setProfile_id(findUserDAO.getUserByUsername(username));
-        auction.setCategory_id(auctionRequest.getCategoryId());
+        auction.setProfileId(findUserDAO.getUserByUsername(username));
+        auction.setCategoryId(auctionRequest.getCategoryId());
         photo.get(0).setAuctionEntity(auction);
         photo.get(1).setAuctionEntity(auction);
         photo.get(2).setAuctionEntity(auction);
         auction.addPhoto(photo.get(0));
         auction.addPhoto(photo.get(1));
         auction.addPhoto(photo.get(2));
+        System.out.println("WWWWWWWWWWWWWWW " + auctionRequest.getCategoryId());
         auctionDAO.save(auction);
+        System.out.println("%%%%%%%%%%%%%%%%%%");
         return "/auction-form.xhtml?faces-redirect=true";
     }
 

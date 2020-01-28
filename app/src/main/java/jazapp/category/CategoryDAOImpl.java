@@ -51,7 +51,7 @@ public class CategoryDAOImpl implements CategoryDAO{
         }
         else
         {
-            System.out.println("lel");
+            System.out.println("category_id Resolved to [NULL]");
         }
     }
 }

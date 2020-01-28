@@ -1,7 +1,6 @@
 package jazapp.photo;
 
 import jazapp.auction.AuctionEntity;
-
 import javax.persistence.*;
 
 @Entity
@@ -10,12 +9,15 @@ public class PhotoEntity
 {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long photo_id;
+    @Column(name = "id")
+    private Long id;
 
+    @Column(name = "photo")
     private String photo;
 
     @ManyToOne(cascade= {CascadeType.PERSIST, CascadeType.MERGE,
             CascadeType.DETACH, CascadeType.REFRESH})
+    @JoinColumn(name="auction_id")
     private AuctionEntity auctionEntity;
 
     public PhotoEntity()
@@ -24,23 +26,23 @@ public class PhotoEntity
 
     public PhotoEntity(PhotoEntity photoEntity)
     {
-        this.photo_id = photoEntity.getPhoto_id();
+        this.id = photoEntity.getId();
         this.photo = photoEntity.getPhoto();
         this.auctionEntity = photoEntity.getAuctionEntity();
     }
 
-    public PhotoEntity(Long photo_id, String photo)
+    public PhotoEntity(Long id, String photo)
     {
-        this.photo_id = photo_id;
+        this.id = id;
         this.photo = photo;
     }
 
-    public Long getPhoto_id() {
-        return photo_id;
+    public Long getId() {
+        return id;
     }
 
-    public void setPhoto_id(Long id) {
-        this.photo_id = id;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getPhoto() {

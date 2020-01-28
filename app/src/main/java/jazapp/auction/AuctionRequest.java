@@ -1,5 +1,6 @@
 package jazapp.auction;
 
+
 import jazapp.photo.PhotoEntity;
 
 import javax.enterprise.context.RequestScoped;
@@ -14,9 +15,19 @@ public class AuctionRequest
     private String title;
     private String description;
     private double price;
-    private Long profileId;
+    private Long profile_id;
     private Long categoryId;
+    private Long photo_id;
     private String photo;
+
+    public void setPhotoId(Long photo_id) {
+        this.photo_id = photo_id;
+    }
+
+    public Long getPhotoId() {
+        return photo_id;
+    }
+
     private String photoTwo;
     private String thirdPhoto;
     private List<PhotoEntity> photoEntity;
@@ -25,25 +36,26 @@ public class AuctionRequest
     {
     }
 
-    public AuctionRequest(Long id, String title, double price, Long profileId, Long auctionId, String description, String photo)
+    public AuctionRequest(Long id, String title, double price, Long profileId, Long auctionId, String description, String photo,Long photo_id)
     {
         this.id = id;
         this.title = title;
         this.price = price;
-        this.profileId = profileId;
-        this.categoryId = auctionId;
+        this.profile_id = profileId;
+        this.categoryId = auctionId; //może generować błędy.
         this.description= description;
         this.photo = photo;
+        this.photo_id=photo_id;
     }
 
     public AuctionRequest(AuctionEntity auction) {
-        this.id = auction.getAuction_id();
+        this.id = auction.getId();
         this.title = auction.getTitle();
         this.price = auction.getPrice();
-        this.profileId = auction.getProfile_id();
-        this.categoryId = auction.getCategory_id();
+        this.profile_id = auction.getProfileId();
+        this.categoryId = auction.getCategoryId();
         this.description = auction.getDescription();
-        this.photo = auction.getPhoto_id();
+        this.photo = auction.getPhoto();
         this.photoEntity = auction.getPhotoEntities();
         this.photoTwo = auction.getPhotoEntities().get(1).getPhoto();
         this.thirdPhoto = auction.getPhotoEntities().get(2).getPhoto();
@@ -74,11 +86,11 @@ public class AuctionRequest
     }
 
     public Long getProfileId() {
-        return profileId;
+        return profile_id;
     }
 
     public void setProfileId(Long profileId) {
-        this.profileId = profileId;
+        this.profile_id = profileId;
     }
 
     public Long getCategoryId() {

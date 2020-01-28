@@ -1,15 +1,8 @@
 databaseChangeLog:
   - changeSet:
-      id: 20191021_init
-      author: Paweł Janowiak
-      sqlFile:
-        relativeToChangelogFile: true
-        splitStatements: false
-        path: 20191021_init.sql
-  - changeSet:
       id: 20191126_init
       author: Igor Motowidło
       sqlFile:
         relativeToChangelogFile: true
         splitStatements: false
-        path: 20191126_init.sql
+        path: 20190128_init.sql

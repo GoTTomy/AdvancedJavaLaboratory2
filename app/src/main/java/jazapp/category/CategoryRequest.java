@@ -1,5 +1,10 @@
 package jazapp.category;
 
+import javax.enterprise.context.RequestScoped;
+import javax.inject.Named;
+
+/*@Named
+@RequestScoped*/
 public class CategoryRequest {
     private Long category_id;
     private Long section_id;
@@ -27,7 +32,7 @@ public class CategoryRequest {
         return category_id;
     }
 
-    public Long getSection_Id() {
+    public Long getSection_id() {
         return section_id;
     }
 
@@ -43,7 +48,7 @@ public class CategoryRequest {
         this.category_id = id;
     }
 
-    public void setSection_Id(Long sectionId) {
+    public void setSection_id(Long sectionId) {
         this.section_id = sectionId;
     }
 

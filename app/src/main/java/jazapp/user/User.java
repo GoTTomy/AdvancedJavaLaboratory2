@@ -34,7 +34,7 @@ public class User {
         return passwd;
     }
 
-    public static String getSurrname() {
+    public static String getSurname() {
         return surname;
     }
 

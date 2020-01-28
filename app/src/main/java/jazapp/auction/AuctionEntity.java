@@ -12,19 +12,27 @@ public class AuctionEntity
 {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long auction_id;
+    @Column(name = "id")
+    private Long id;
 
+    @Column(name = "title")
     private String title;
 
+    @Column(name = "price")
     private double price;
 
+    @Column(name = "description")
     private String description;
 
-    private Long profile_id;
+    @Column(name = "profile_id")
+    private Long profileId;
 
-    private Long category_id;
+    @Column(name = "category_id")
+    private Long categoryId;
 
-    private String photo_id;
+
+    @Column(name = "photo")//DO USUNIĘCIA
+    private String photo;
 
     @OneToMany(fetch = FetchType.EAGER, mappedBy="auctionEntity",
             cascade= {CascadeType.ALL})
@@ -34,21 +42,23 @@ public class AuctionEntity
     {
     }
 
-    public AuctionEntity(Long auction_id, String title, double price, String description, String photo_id)
+    public AuctionEntity(Long id,String title, double price, String description, String photo,Long profileId,Long categoryId)
     {
-        this.auction_id = auction_id;
+        this.id = id;
         this.title = title;
         this.price = price;
         this.description = description;
-        this.photo_id = photo_id;
+        this.photo = photo;
+        this.profileId=profileId;
+        this.categoryId=categoryId;
     }
 
-    public Long getAuction_id() {
-        return auction_id;
+    public Long getId() {
+        return id;
     }
 
-    public void setAuction_id(Long id) {
-        this.auction_id = id;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getTitle() {
@@ -75,28 +85,28 @@ public class AuctionEntity
         this.description = description;
     }
 
-    public Long getProfile_id() {
-        return profile_id;
+    public Long getProfileId() {
+        return profileId;
     }
 
-    public void setProfile_id(Long profileId) {
-        this.profile_id = profileId;
+    public void setProfileId(Long profileId) {
+        this.profileId = profileId;
     }
 
-    public Long getCategory_id() {
-        return category_id;
+    public Long getCategoryId() {
+        return categoryId;
     }
 
-    public void setCategory_id(Long categoryId) {
-        this.category_id = categoryId;
+    public void setCategoryId(Long categoryId) {
+        this.categoryId = categoryId;
     }
 
-    public String getPhoto_id() {
-        return photo_id;
+    public String getPhoto() {
+        return photo;
     }
 
-    public void setPhoto_id(String photo) {
-        this.photo_id = photo;
+    public void setPhoto(String photo) {
+        this.photo = photo;
     }
 
     public List<PhotoEntity> getPhotoEntities() {

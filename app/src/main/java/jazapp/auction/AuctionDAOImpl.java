@@ -1,5 +1,6 @@
 package jazapp.auction;
 
+
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Named;
 import javax.persistence.EntityManager;
@@ -10,7 +11,8 @@ import java.util.Optional;
 
 @Named
 @RequestScoped
-public class AuctionDAOImpl implements AuctionDAO{
+public class AuctionDAOImpl implements AuctionDAO
+{
     @PersistenceContext
     EntityManager em;
 
@@ -18,7 +20,7 @@ public class AuctionDAOImpl implements AuctionDAO{
     @Transactional
     public List<AuctionEntity> getAuctionList()
     {
-        return em.createQuery("FROM AuctionEntity ORDER BY auction_id ASC ").getResultList();
+        return em.createQuery("FROM AuctionEntity ORDER BY id ASC ").getResultList();
     }
 
     @Override
@@ -32,7 +34,7 @@ public class AuctionDAOImpl implements AuctionDAO{
     @Transactional
     public void save(AuctionEntity auctionEntity)
     {
-        if (auctionEntity.getAuction_id() == null)
+        if (auctionEntity.getId() == null)
         {
             em.persist(auctionEntity);
         } else {

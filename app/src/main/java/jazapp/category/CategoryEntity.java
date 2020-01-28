@@ -12,12 +12,12 @@ public class CategoryEntity {
     private Long category_id;
 
     private String name,description;
+
     private Long section_id;
 
     public CategoryEntity(){
 
     }
-
     public CategoryEntity(Long category_id, String name, String description){
         this.category_id = category_id;
         this.name=name;

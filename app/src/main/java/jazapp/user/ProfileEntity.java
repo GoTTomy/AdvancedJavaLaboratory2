@@ -79,8 +79,8 @@ public class ProfileEntity {
         this.name = name;
     }
 
-    public void setSurname(String surrname) {
-        this.surname = surrname;
+    public void setSurname(String surname) {
+        this.surname = surname;
     }
 
     public void setEmail(String email) {
