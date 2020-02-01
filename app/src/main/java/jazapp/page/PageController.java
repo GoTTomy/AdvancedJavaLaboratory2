@@ -18,6 +18,12 @@ public class PageController
     @Inject
     AuctionRequest auctionRequest;
 
+    private String username;
+
+    public PageController(){
+        this.username=getUsername();
+    }
+
     public String showProfileForm()
     {
         return  "/profile-form.xhtml?faces-redirect=true";
@@ -93,7 +99,7 @@ public class PageController
     public String canEditAuction()
     {
         String session = SessionUtils.getUsername();
-        if(findUserDAO.getUserByUsername(session).equals(auctionRequest.getProfileId()))
+        if(findUserDAO.getUserByUsername(session).equals(auctionRequest.getProfile_id()))
         {
             return "/edit-list-auction.xhtml?faces-redirect=true";
         }
@@ -102,7 +108,7 @@ public class PageController
             return "/index.xhtml?faces-redirect=true";
         }
     }
-    public String getUserName()
+    public String getUsername()
     {
         return SessionUtils.getUsername();
     }

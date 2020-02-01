@@ -84,7 +84,7 @@ public class AuctionRequest
         this.price = price;
     }
 
-    public Long getProfileId() {
+    public Long getProfile_id() {
         return profile_id;
     }
 

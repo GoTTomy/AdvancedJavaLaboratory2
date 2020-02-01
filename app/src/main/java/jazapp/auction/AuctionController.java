@@ -59,7 +59,7 @@ public class AuctionController
         String username = SessionUtils.getUsername();
 
         var auction = new AuctionEntity(auctionRequest.getId(),auctionRequest.getTitle(),auctionRequest.getPrice(),
-                auctionRequest.getDescription(),auctionRequest.getProfileId(),auctionRequest.getCategoryId());
+                auctionRequest.getDescription(),auctionRequest.getProfile_id(),auctionRequest.getCategoryId());
         System.out.println("$$$$$$$$$$$$$$$$");
         System.out.println(auctionRequest.getId());
         System.out.println(auctionRequest.getCategoryId());
